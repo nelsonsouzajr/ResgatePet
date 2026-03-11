@@ -195,6 +195,9 @@ animal-rescue-platform/
 | `npm run build` | Gera build otimizado em `dist/` |
 | `npm run preview` | Visualiza o build localmente |
 | `npm run lint` | Executa ESLint |
+| `npm test` | Executa os testes automatizados do frontend (Vitest) |
+| `npm run test:watch` | Executa os testes em modo observação |
+| `npm run test:coverage` | Executa testes com relatório de cobertura |
 
 ---
 

@@ -65,7 +65,7 @@ cd frontend && npm install && npm run dev
 - [x] **FASE 3** – Backend (controllers, services, repositories)
 - [x] **FASE 4** – Frontend (páginas, componentes, hooks e validações)
 - [x] **FASE 5** – Integração frontend ↔ backend
-- [ ] **FASE 6** – Testes
+- [x] **FASE 6** – Testes
 - [ ] **FASE 7** – Documentação final
 
 ## Entregas da Fase 4
@@ -83,6 +83,20 @@ cd frontend && npm install && npm run dev
 - Proxy de `/uploads` no Vite para exibição de imagens durante desenvolvimento
 - Fluxo de atualização de status alinhado às transições permitidas no backend
 - Revalidação completa: testes do backend e build do frontend com sucesso
+
+## Entregas da Fase 6
+
+- Setup de testes de frontend com Vitest + Testing Library + jsdom
+- Scripts adicionados no frontend: `npm test`, `npm run test:watch`, `npm run test:coverage`
+- Testes de roteamento e proteção de rotas no App
+- Testes de renderização para badges de status e prioridade
+- Testes de comportamento do hook `useCases` (filtro local por cidade e tratamento de erro)
+- Testes utilitários de resolução de URL de assets (`resolveAssetUrl`)
+- Testes de páginas críticas: Login, Nova Ocorrência e Atualização de Caso
+- Testes de integração da camada de serviços de casos com mocks de API
+- Execução validada no frontend: 22 testes passando
+- Cobertura de testes do frontend: 78.36% de statements, 75.32% de branches, 67.21% de funções e 78.57% de linhas
+- Revalidação completa: testes de backend (33) e frontend (22) passando, com build de produção sem regressão
 
 ---
 
