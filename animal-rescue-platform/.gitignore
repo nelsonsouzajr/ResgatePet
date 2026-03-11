@@ -1,0 +1,34 @@
+# ─── Node.js ─────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Build ───────────────────────────────────────────────────────────────────
+dist/
+build/
+*.tsbuildinfo
+
+# ─── Variáveis de Ambiente ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+# Manter .env.example como referência – não ignorar
+
+# ─── Uploads (arquivos enviados pelos usuários) ───────────────────────────────
+backend/uploads/
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── IDEs e Editores ─────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Testes ──────────────────────────────────────────────────────────────────
+coverage/

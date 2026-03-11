@@ -1,0 +1,67 @@
+/*
+ * styles/index.css
+ * Arquivo CSS principal da aplicação.
+ * As três diretivas @tailwind carregam as camadas base, componentes
+ * e utilitários do Tailwind. Estilos globais customizados ficam após elas.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Fontes Globais ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ─── Variáveis CSS Customizadas ─────────────────────────────────── */
+:root {
+  --color-brand: #e85d04;
+  --color-brand-light: #f48c06;
+  --color-brand-dark: #9d0208;
+}
+
+/* ─── Reset Básico ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f9fafb; /* gray-50 */
+  color: #111827;            /* gray-900 */
+  margin: 0;
+}
+
+/* ─── Classes Utilitárias Reutilizáveis ──────────────────────────── */
+@layer components {
+  /* Botão primário padrão do sistema */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2
+           text-sm font-semibold text-white shadow-sm transition-colors
+           hover:bg-brand-dark focus:outline-none focus:ring-2
+           focus:ring-brand focus:ring-offset-2 disabled:opacity-50;
+  }
+
+  /* Botão secundário */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-gray-300
+           bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm
+           transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2
+           focus:ring-brand focus:ring-offset-2 disabled:opacity-50;
+  }
+
+  /* Card padrão */
+  .card {
+    @apply rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200;
+  }
+
+  /* Badge de status */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+}
