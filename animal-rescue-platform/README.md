@@ -57,6 +57,7 @@ cd frontend && npm install && npm run dev
 | [docs/api.md](docs/api.md) | Referência dos endpoints REST |
 | [docs/database.md](docs/database.md) | Schema, relacionamentos e modelo de dados |
 | [docs/setup.md](docs/setup.md) | Instalação e execução |
+| [docs/testing.md](docs/testing.md) | Estratégia de testes, cobertura e critérios de qualidade |
 
 ## Fases de Desenvolvimento
 
@@ -66,7 +67,7 @@ cd frontend && npm install && npm run dev
 - [x] **FASE 4** – Frontend (páginas, componentes, hooks e validações)
 - [x] **FASE 5** – Integração frontend ↔ backend
 - [x] **FASE 6** – Testes
-- [ ] **FASE 7** – Documentação final
+- [x] **FASE 7** – Documentação final
 
 ## Entregas da Fase 4
 
@@ -97,6 +98,14 @@ cd frontend && npm install && npm run dev
 - Execução validada no frontend: 22 testes passando
 - Cobertura de testes do frontend: 78.36% de statements, 75.32% de branches, 67.21% de funções e 78.57% de linhas
 - Revalidação completa: testes de backend (33) e frontend (22) passando, com build de produção sem regressão
+
+## Entregas da Fase 7
+
+- Consolidação da documentação técnica final (arquitetura, API, banco, setup e qualidade)
+- Atualização da referência de API com contratos e códigos de erro alinhados ao comportamento real
+- Criação do guia de testes e qualidade em `docs/testing.md`
+- Padronização do guia de setup com passos de validação pós-instalação
+- Projeto finalizado com todas as fases concluídas (1 a 7)
 
 ---
 

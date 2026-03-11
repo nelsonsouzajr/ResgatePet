@@ -171,7 +171,8 @@ animal-rescue-platform/
     ├── architecture.md
     ├── api.md
     ├── database.md
-    └── setup.md
+    ├── setup.md
+    └── testing.md
 ```
 
 ---
@@ -186,6 +187,8 @@ animal-rescue-platform/
 | `npm run build` | Compila TypeScript para `dist/` |
 | `npm start` | Executa o build compilado |
 | `npm test` | Executa os testes automatizados |
+| `npm run test:watch` | Executa testes em modo observação |
+| `npm run test:coverage` | Executa testes com cobertura |
 
 ### Frontend
 
@@ -224,3 +227,22 @@ animal-rescue-platform/
 | Variável | Obrigatória | Padrão | Descrição |
 |---|---|---|---|
 | `VITE_API_URL` | Sim | — | URL base da API backend |
+
+---
+
+## 9. Validação de Qualidade
+
+Após a configuração completa, execute:
+
+```bash
+# Backend
+cd backend
+npm test
+
+# Frontend
+cd ../frontend
+npm test
+npm run build
+```
+
+Para detalhes de estratégia e cobertura, consulte `docs/testing.md`.

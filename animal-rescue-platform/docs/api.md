@@ -16,6 +16,21 @@ Authorization: Bearer <token_jwt>
 
 ---
 
+## Health Check
+
+### GET `/health`
+Verifica se a API está ativa.
+
+**Resposta 200:**
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-03-11T14:00:00.000Z"
+}
+```
+
+---
+
 ## Módulo: Casos de Resgate (`/cases`)
 
 ### POST `/cases`
@@ -61,7 +76,6 @@ Lista ocorrências com filtros opcionais.
 |---|---|---|
 | `status` | string | Filtra por status (`reported`, `in_rescue`, etc.) |
 | `priority` | string | `low`, `medium`, `high`, `critical` |
-| `city` | string | Nome da cidade |
 | `page` | number | Paginação (padrão: 1) |
 | `limit` | number | Itens por página (padrão: 20) |
 
@@ -92,7 +106,7 @@ Retorna os detalhes completos de uma ocorrência, incluindo animal, imagens e hi
   "created_at": "2026-03-11T14:00:00Z",
   "updated_at": "2026-03-11T16:30:00Z",
   "animal": { ...animalObject },
-  "reported_by": { "id": 5, "name": "Maria Silva" },
+  "reporter": { "id": 5, "name": "Maria Silva", "email": "maria@email.com" },
   "organization": { "id": 1, "name": "ONG Patas Livres" },
   "images": [ { "id": 1, "image_url": "https://..." } ],
   "updates": [ { "id": 1, "status": "reported", "notes": "...", "created_at": "..." } ]
@@ -194,8 +208,34 @@ Autentica o usuário e retorna o token JWT.
 ### GET `/organizations`
 Lista todas as organizações cadastradas.
 
+### GET `/organizations/:id`
+Retorna os detalhes de uma organização específica.
+
 ### POST `/organizations`
 Cadastra uma nova ONG. **Autenticação:** requerida (role: admin)
+
+---
+
+## Respostas de Erro
+
+### Erro de domínio
+```json
+{ "error": "mensagem" }
+```
+
+### Erro de validação
+```json
+{
+  "errors": [
+    {
+      "type": "field",
+      "msg": "Senha deve ter pelo menos 6 caracteres.",
+      "path": "password",
+      "location": "body"
+    }
+  ]
+}
+```
 
 ---
 
@@ -209,4 +249,6 @@ Cadastra uma nova ONG. **Autenticação:** requerida (role: admin)
 | 401 | Não autenticado |
 | 403 | Sem permissão |
 | 404 | Não encontrado |
+| 409 | Conflito (ex.: e-mail já cadastrado) |
+| 422 | Regra de negócio inválida (ex.: transição de status) |
 | 500 | Erro interno do servidor |

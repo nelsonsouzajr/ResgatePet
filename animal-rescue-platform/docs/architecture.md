@@ -117,3 +117,33 @@ Mantém toda a documentação técnica do projeto.
 | **Migrações SQL** | Versionamento do schema, fácil rollback e onboarding |
 | **Padrão Repository** | Desacoplamento entre lógica de negócio e acesso a dados |
 | **Tailwind CSS** | Produtividade alta sem CSS customizado excessivo |
+
+---
+
+## Segurança e Governança
+
+- Autenticação baseada em JWT com expiração configurável via ambiente.
+- Rotas sensíveis protegidas por middleware de autenticação.
+- Controle de autorização por role em endpoints administrativos.
+- Validação de entrada centralizada com express-validator.
+- Tratamento global de erros para padronização das respostas.
+
+---
+
+## Qualidade e Testes
+
+- Backend validado com Jest + Supertest.
+- Frontend validado com Vitest + Testing Library + jsdom.
+- Fluxos críticos cobertos em API, páginas principais, hooks e serviços.
+- Build de produção validado ao final das fases de implementação e testes.
+
+Para detalhes operacionais de testes e cobertura, consultar `docs/testing.md`.
+
+---
+
+## Estado Atual da Solução
+
+- Arquitetura por camadas implementada e em funcionamento (Controller -> Service -> Repository).
+- Contrato principal entre frontend e backend estabilizado na Fase 5.
+- Regras de transição de status aplicadas no backend e refletidas na UI.
+- Documentação técnica consolidada para instalação, API, banco, arquitetura e qualidade.
