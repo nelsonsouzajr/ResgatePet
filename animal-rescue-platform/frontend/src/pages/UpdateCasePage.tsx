@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AppShell } from '@/components/AppShell';
 import { FormHint } from '@/components/FormHint';
 import { useCaseDetails } from '@/hooks/useCaseDetails';
 import { updateCaseStatus, uploadCaseImages } from '@/services/cases.service';
-import { CaseStatus } from '@/types/case';
+import { CaseStatus, allowedStatusTransitions, statusLabel } from '@/types/case';
 
 export default function UpdateCasePage() {
   const navigate = useNavigate();
@@ -19,11 +19,27 @@ export default function UpdateCasePage() {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  const transitionOptions = useMemo<CaseStatus[]>(() => {
+    if (!data) return [];
+    return allowedStatusTransitions[data.status];
+  }, [data]);
+
+  useEffect(() => {
+    if (!transitionOptions.length) return;
+    setStatus(transitionOptions[0]);
+  }, [transitionOptions]);
+
   const formError = useMemo(() => {
-    if (!status) return 'Selecione um status válido.';
+    if (!data) return '';
+    if (!transitionOptions.length) {
+      return 'Caso em status terminal: não há transições disponíveis.';
+    }
+    if (!transitionOptions.includes(status)) {
+      return 'Selecione uma transição válida para o status atual.';
+    }
     if (notes.length > 2000) return 'Observações devem ter no máximo 2000 caracteres.';
     return '';
-  }, [notes.length, status]);
+  }, [data, notes.length, status, transitionOptions]);
 
   function onFilesChange(event: ChangeEvent<HTMLInputElement>) {
     const list = event.target.files;
@@ -84,12 +100,16 @@ export default function UpdateCasePage() {
                 className="mt-1 w-full rounded-lg border border-sand-300 px-3 py-2 text-sm"
                 value={status}
                 onChange={(event) => setStatus(event.target.value as CaseStatus)}
+                disabled={!transitionOptions.length}
               >
-                <option value="reported">Reportado</option>
-                <option value="awaiting_rescue">Aguardando resgate</option>
-                <option value="in_rescue">Em resgate</option>
-                <option value="under_treatment">Em tratamento</option>
-                <option value="resolved">Resolvido</option>
+                {!transitionOptions.length && (
+                  <option value={status}>Sem transição disponível</option>
+                )}
+                {transitionOptions.map((nextStatus) => (
+                  <option key={nextStatus} value={nextStatus}>
+                    {statusLabel[nextStatus]}
+                  </option>
+                ))}
               </select>
             </label>
 

@@ -114,6 +114,14 @@ export const statusLabel: Record<CaseStatus, string> = {
   resolved: 'Resolvido',
 };
 
+export const allowedStatusTransitions: Record<CaseStatus, CaseStatus[]> = {
+  reported: ['awaiting_rescue', 'resolved'],
+  awaiting_rescue: ['in_rescue', 'resolved'],
+  in_rescue: ['under_treatment', 'resolved'],
+  under_treatment: ['resolved'],
+  resolved: [],
+};
+
 export const priorityLabel: Record<CasePriority, string> = {
   low: 'Baixa',
   medium: 'Média',

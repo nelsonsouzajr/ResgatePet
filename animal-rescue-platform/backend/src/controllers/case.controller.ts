@@ -20,14 +20,24 @@ export const CaseController = {
     try {
       const { status, priority, page, limit } = req.query;
 
+      const parsedPage = Math.max(1, parseInt((page as string) ?? '1', 10) || 1);
+      const parsedLimit = Math.min(
+        100,
+        Math.max(1, parseInt((limit as string) ?? '20', 10) || 20)
+      );
+
       const result = await CaseService.list({
         status:   status   as CaseStatus   | undefined,
         priority: priority as CasePriority | undefined,
-        page:     page     ? parseInt(page as string, 10)  : undefined,
-        limit:    limit    ? parseInt(limit as string, 10) : undefined,
+        page: parsedPage,
+        limit: parsedLimit,
       });
 
-      res.status(200).json(result);
+      res.status(200).json({
+        ...result,
+        page: parsedPage,
+        limit: parsedLimit,
+      });
     } catch (err) {
       next(err);
     }

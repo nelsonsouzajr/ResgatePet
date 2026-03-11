@@ -64,7 +64,7 @@ cd frontend && npm install && npm run dev
 - [x] **FASE 2** – Banco de dados (schema SQL e migrações)
 - [x] **FASE 3** – Backend (controllers, services, repositories)
 - [x] **FASE 4** – Frontend (páginas, componentes, hooks e validações)
-- [ ] **FASE 5** – Integração frontend ↔ backend
+- [x] **FASE 5** – Integração frontend ↔ backend
 - [ ] **FASE 6** – Testes
 - [ ] **FASE 7** – Documentação final
 
@@ -75,6 +75,14 @@ cd frontend && npm install && npm run dev
 - Hooks customizados para listagem, dashboard e detalhes de casos
 - Formulários controlados com validação local para cadastro e atualização
 - Build de produção validado com sucesso via Vite + TypeScript
+
+## Entregas da Fase 5
+
+- Contrato de paginação padronizado no endpoint de listagem de casos (`data`, `total`, `page`, `limit`)
+- Resolução correta de URLs de imagens (uploads) no frontend para ambiente local e produção
+- Proxy de `/uploads` no Vite para exibição de imagens durante desenvolvimento
+- Fluxo de atualização de status alinhado às transições permitidas no backend
+- Revalidação completa: testes do backend e build do frontend com sucesso
 
 ---
 

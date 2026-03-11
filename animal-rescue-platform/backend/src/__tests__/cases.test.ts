@@ -73,6 +73,8 @@ describe('GET /api/cases', () => {
     expect(res.status).toBe(200);
     expect(res.body).toHaveProperty('data');
     expect(res.body).toHaveProperty('total', 1);
+    expect(res.body).toHaveProperty('page', 1);
+    expect(res.body).toHaveProperty('limit', 20);
     expect(Array.isArray(res.body.data)).toBe(true);
   });
 

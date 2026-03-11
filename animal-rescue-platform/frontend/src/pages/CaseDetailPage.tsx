@@ -4,6 +4,7 @@ import { MapBoard } from '@/components/MapBoard';
 import { StatusBadge } from '@/components/StatusBadge';
 import { PriorityBadge } from '@/components/PriorityBadge';
 import { useCaseDetails } from '@/hooks/useCaseDetails';
+import { resolveAssetUrl } from '@/services/api';
 
 export default function CaseDetailPage() {
   const { id } = useParams();
@@ -95,7 +96,7 @@ export default function CaseDetailPage() {
                   {data.images.map((image) => (
                     <div key={image.id} className="overflow-hidden rounded-xl border border-sand-200">
                       <img
-                        src={image.image_url}
+                        src={resolveAssetUrl(image.image_url)}
                         alt={`Imagem da ocorrência ${data.id}`}
                         className="h-48 w-full object-cover"
                       />
