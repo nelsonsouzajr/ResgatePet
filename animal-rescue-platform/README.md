@@ -60,13 +60,21 @@ cd frontend && npm install && npm run dev
 
 ## Fases de Desenvolvimento
 
-- [x] **FASE 1** – Planejamento e estruturação *(atual)*
-- [ ] **FASE 2** – Banco de dados (schema SQL e migrações)
-- [ ] **FASE 3** – Backend (controllers, services, repositories)
-- [ ] **FASE 4** – Frontend (páginas e componentes React)
+- [x] **FASE 1** – Planejamento e estruturação
+- [x] **FASE 2** – Banco de dados (schema SQL e migrações)
+- [x] **FASE 3** – Backend (controllers, services, repositories)
+- [x] **FASE 4** – Frontend (páginas, componentes, hooks e validações)
 - [ ] **FASE 5** – Integração frontend ↔ backend
 - [ ] **FASE 6** – Testes
 - [ ] **FASE 7** – Documentação final
+
+## Entregas da Fase 4
+
+- Rotas React Router completas para dashboard, cadastro, lista, detalhes, atualização e login
+- Componentes reutilizáveis de layout, tabela, badges e mapa de ocorrências
+- Hooks customizados para listagem, dashboard e detalhes de casos
+- Formulários controlados com validação local para cadastro e atualização
+- Build de produção validado com sucesso via Vite + TypeScript
 
 ---
 

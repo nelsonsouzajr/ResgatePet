@@ -3,6 +3,7 @@
         "/^cd \"g:\\\\NTECH\\\\PI - UNIVESP 2026\\\\ResgatePet\\\\animal-rescue-platform\\\\backend\" ; npm install --save-dev @types/jest 2>&1 \\| Select-String \"added\\|error\" \\| Select-Object -Last 5$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "npm install": true
     }
 }

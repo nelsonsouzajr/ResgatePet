@@ -1,50 +1,92 @@
 /**
  * App.tsx
- * Componente raiz da aplicação.
- * Configura o React Router com todas as rotas principais do sistema.
- * As páginas serão implementadas nas fases seguintes;
- * por enquanto exibem placeholders para validar o roteamento.
+ * Componente raiz da aplicação com roteamento completo da Fase 4.
+ * Inclui proteção simples por token para rotas internas.
  */
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import type { ReactElement } from 'react';
+import DashboardPage from '@/pages/DashboardPage';
+import CaseListPage from '@/pages/CaseListPage';
+import NewCasePage from '@/pages/NewCasePage';
+import CaseDetailPage from '@/pages/CaseDetailPage';
+import UpdateCasePage from '@/pages/UpdateCasePage';
+import LoginPage from '@/pages/LoginPage';
 
-// Páginas (serão implementadas na FASE 4)
-// import DashboardPage from '@/pages/DashboardPage';
-// import CaseListPage from '@/pages/CaseListPage';
-// import NewCasePage from '@/pages/NewCasePage';
-// import CaseDetailPage from '@/pages/CaseDetailPage';
-// import UpdateCasePage from '@/pages/UpdateCasePage';
-// import LoginPage from '@/pages/LoginPage';
-
-// Layout stub temporário para validar o roteamento na Fase 1
-function PlaceholderPage({ title }: { title: string }) {
+function NotFoundPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="rounded-xl bg-white p-10 shadow-md text-center">
-        <h1 className="text-2xl font-bold text-brand mb-2">ResgatePet</h1>
-        <p className="text-gray-500">{title} – em desenvolvimento</p>
+    <div className="grid min-h-screen place-items-center bg-canvas px-4">
+      <div className="rounded-2xl border border-sand-200 bg-white p-8 text-center shadow-soft">
+        <h1 className="text-2xl font-black text-ink-900">Página não encontrada</h1>
+        <p className="mt-2 text-sm text-ink-500">A rota informada não existe no sistema.</p>
+        <a href="/dashboard" className="btn-primary mt-5 inline-flex">Ir para Dashboard</a>
       </div>
     </div>
   );
 }
 
+function ProtectedRoute({ children }: { children: ReactElement }) {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
 function App() {
+  const token = localStorage.getItem('token');
+
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rota padrão redireciona para o dashboard */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate to={token ? '/dashboard' : '/login'} replace />} />
 
-        {/* Rotas principais – componentes reais serão injetados na Fase 4 */}
-        <Route path="/dashboard"       element={<PlaceholderPage title="Dashboard" />} />
-        <Route path="/cases"           element={<PlaceholderPage title="Lista de Ocorrências" />} />
-        <Route path="/cases/new"       element={<PlaceholderPage title="Nova Ocorrência" />} />
-        <Route path="/cases/:id"       element={<PlaceholderPage title="Detalhes da Ocorrência" />} />
-        <Route path="/cases/:id/edit"  element={<PlaceholderPage title="Atualizar Ocorrência" />} />
-        <Route path="/login"           element={<PlaceholderPage title="Login" />} />
+        <Route path="/login" element={<LoginPage />} />
 
-        {/* Rota 404 */}
-        <Route path="*" element={<PlaceholderPage title="Página não encontrada" />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cases"
+          element={
+            <ProtectedRoute>
+              <CaseListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cases/new"
+          element={
+            <ProtectedRoute>
+              <NewCasePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cases/:id"
+          element={
+            <ProtectedRoute>
+              <CaseDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cases/:id/edit"
+          element={
+            <ProtectedRoute>
+              <UpdateCasePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
