@@ -33,6 +33,12 @@ Criar o arquivo de variáveis de ambiente:
 cp .env.example .env
 ```
 
+No Windows (Prompt de Comando), use:
+
+```bat
+copy .env.example .env
+```
+
 Editar `.env` com suas configurações:
 
 ```env
@@ -113,11 +119,25 @@ Criar arquivo de ambiente:
 cp .env.example .env
 ```
 
+No Windows (Prompt de Comando), use:
+
+```bat
+copy .env.example .env
+```
+
 Conteúdo do `.env`:
 
 ```env
 VITE_API_URL=http://localhost:3000/api
 ```
+
+Opcional (branding):
+
+- Coloque os logos em `frontend/public/brand/`
+- Nomes esperados pelo frontend:
+    - `resgatepet-wordmark.png`
+    - `resgatepet-symbol.png`
+- Referência: `frontend/public/brand/README.txt`
 
 ---
 

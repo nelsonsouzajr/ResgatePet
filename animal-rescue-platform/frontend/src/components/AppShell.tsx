@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getCurrentUser, logout } from '@/services/auth.service';
+import { BrandLogo } from '@/components/BrandLogo';
 
 interface AppShellProps {
   title: string;
@@ -23,7 +24,11 @@ export function AppShell({ title, subtitle, actions, children }: AppShellProps) 
       <header className="sticky top-0 z-20 border-b border-sand-200/70 bg-white/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand text-sm font-black text-white">RP</div>
+            <BrandLogo
+              variant="symbol"
+              alt="ResgatePet"
+              className="h-9 w-9 rounded-lg object-cover"
+            />
             <div>
               <p className="text-sm font-black tracking-wide text-ink-900">ResgatePet Control</p>
               <p className="text-xs text-ink-500">Gestão de ocorrências de resgate animal</p>

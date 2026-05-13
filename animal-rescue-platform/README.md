@@ -49,6 +49,8 @@ cd backend && npm install && npm run dev
 cd frontend && npm install && npm run dev
 ```
 
+Para aplicar o logo no frontend, veja as instruções em `frontend/public/brand/README.txt`.
+
 ## Documentação
 
 | Documento | Descrição |

@@ -2,6 +2,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '@/services/auth.service';
 import { FormHint } from '@/components/FormHint';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -39,7 +40,11 @@ export default function LoginPage() {
   return (
     <div className="grid min-h-screen place-items-center bg-canvas px-4 py-10">
       <div className="w-full max-w-md rounded-2xl border border-sand-200 bg-white p-6 shadow-soft">
-        <p className="text-xs font-black uppercase tracking-[0.14em] text-brand">ResgatePet</p>
+        <BrandLogo
+          variant="wordmark"
+          alt="ResgatePet"
+          className="mx-auto h-16 w-auto object-contain"
+        />
         <h1 className="mt-2 text-2xl font-black text-ink-900">Acesso da equipe</h1>
         <p className="mt-1 text-sm text-ink-500">Entre com suas credenciais para gerenciar as ocorrências.</p>
 
