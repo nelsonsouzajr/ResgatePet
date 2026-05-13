@@ -38,6 +38,10 @@ empacotado via **Vite** para builds rápidos. O **Tailwind CSS** cuida da estili
 Toda comunicação com o servidor ocorre via chamadas HTTP aos endpoints REST expostos
 pelo backend (sem acesso direto ao banco de dados).
 
+O dashboard operacional também exibe as ocorrências em um mapa real, usando
+**Leaflet** com tiles do **OpenStreetMap**. Essa escolha mantém a solução sem custo
+de licenciamento para demonstração e apresentação, sem depender de APIs pagas.
+
 | Subpasta | Responsabilidade |
 |---|---|
 | `components/` | Componentes visuais reutilizáveis (botões, cards, modais, tabelas) |
