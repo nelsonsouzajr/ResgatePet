@@ -10,6 +10,8 @@
 -- As senhas abaixo são o hash bcrypt de "senha123" (custo 10).
 -- =============================================================================
 
+\encoding UTF8
+
 -- Limpa dados existentes respeitando a ordem das FK (do filho para o pai)
 TRUNCATE TABLE
   case_updates,
