@@ -6,6 +6,14 @@ import { MapBoard } from '@/components/MapBoard';
 import { useDashboard } from '@/hooks/useDashboard';
 import { CaseStatus } from '@/types/case';
 
+const statusColorMap: Record<CaseStatus, string> = {
+  reported: '#d97706',
+  awaiting_rescue: '#ea580c',
+  in_rescue: '#c2410c',
+  under_treatment: '#2563eb',
+  resolved: '#059669',
+};
+
 const statusOptions: Array<{ value: CaseStatus | ''; label: string }> = [
   { value: '', label: 'Todos os status' },
   { value: 'reported', label: 'Reportado' },
@@ -51,6 +59,7 @@ export default function DashboardPage() {
               label: `#${item.id} · ${item.animal_species}`,
               latitude: item.latitude,
               longitude: item.longitude,
+              color: statusColorMap[item.status],
             }))}
           />
         </div>
